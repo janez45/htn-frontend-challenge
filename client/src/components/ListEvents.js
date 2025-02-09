@@ -1,4 +1,5 @@
 import React, { Fragment, useState, useEffect } from "react";
+import EventCard from "./EventCard";
 
 const ListEvents = () => {
   const [events, setEvents] = useState([]);
@@ -20,36 +21,9 @@ const ListEvents = () => {
   // TODO: For each, create a card
   return (
     <Fragment>
-      <table class="table">
-        <thead class="thead-dark">
-          <tr>
-            <th scope="col">#</th>
-            <th scope="col">First</th>
-            <th scope="col">Last</th>
-            <th scope="col">Handle</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <th scope="row">1</th>
-            <td>{events[0].name}</td>
-            <td>Otto</td>
-            <td>@mdo</td>
-          </tr>
-          <tr>
-            <th scope="row">2</th>
-            <td>Jacob</td>
-            <td>Thornton</td>
-            <td>@fat</td>
-          </tr>
-          <tr>
-            <th scope="row">3</th>
-            <td>Larry</td>
-            <td>the Bird</td>
-            <td>@twitter</td>
-          </tr>
-        </tbody>
-      </table>
+      {events.map((event) => (
+        <EventCard event={event} />
+      ))}
     </Fragment>
   );
 };
