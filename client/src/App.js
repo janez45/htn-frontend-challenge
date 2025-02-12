@@ -1,9 +1,14 @@
 import { Fragment } from "react";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+  Navigate,
+} from "react-router-dom";
 import "./App.css";
 
 import ListEvents from "./components/ListEvents.js";
-import EventCard from "./components/EventCard.js";
+import Event from "./components/Event.js";
 
 const NotFound = () => {
   return (
@@ -15,12 +20,14 @@ const NotFound = () => {
 
 function App() {
   return (
-    <BrowserRouter>
+    <Router>
       <Routes>
-        <Route path="/" element={<ListEvents />} />
+        <Route path="/" element={<Navigate to="/events" replace />} />
+        <Route path="/events" element={<ListEvents />} />
+        <Route path="/events/:id" element={<Event />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
-    </BrowserRouter>
+    </Router>
   );
 }
 

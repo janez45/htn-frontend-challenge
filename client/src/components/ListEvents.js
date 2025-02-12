@@ -8,6 +8,7 @@ const ListEvents = () => {
     try {
       const response = await fetch("https://api.hackthenorth.com/v3/events");
       const jsonData = await response.json();
+      jsonData.sort((a, b) => a["start_time"] - b["start_time"]);
       setEvents(jsonData);
     } catch (err) {
       console.error(err.message);
